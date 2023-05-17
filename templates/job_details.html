@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <title>Job Details</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div>
+            <h2>{{job['Title']}}</h2>
+            {if job['Salary']}
+                <h3>{{job['Salary']}}</h3>
+            {endif}
+            <p>{{job['Description']}}</p>
+            <button type="button" title="Contact Us" onclick="location.href='/contact.html'">Contact Us</button>
+        </div>
+    </body>
+</html>
