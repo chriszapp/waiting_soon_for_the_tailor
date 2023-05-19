@@ -8,21 +8,29 @@
     </head>
     <body>
         
-        <div class="px-1 py-1 my-1 text-center">
-            <h1 class = "display-5 fw-bold text-body-emphasis">Cristina' Careers</h1>
-            <img  src="static\growth_pic.jpeg" alt="Cristina's Careers">
+        <div>
+            <h1 class = 'text-center'>Cristina' Careers</h1>
+            <img  src="static\growth_pic.jpeg" alt="Cristina's Careers" class = 'container-fluid'>
         </div>
-        <div class = "text-center">
-            <h3>About Cristina</h3>
-            <p>Hello there, you'll learn about some jobs! About me, too much and not enough to say. </p>
-            <h3>Jobs</h3>
+        <div class = 'container text-center'>
+            <div class = 'mt-3'>
+                <h3 class = 'mt-3'>About Cristina</h3>
+                <p class = 'lead'>Hello there, you'll learn about some jobs! About me, too much and not enough to say. </p>
+            </div>
+            <div class="mt-3">
+                <h3>Jobs</h3>
+            </div> 
             {% for job in jobs %}
-                <h4>{{ job.title }}</h4>
-                <h6>{{ job.salary }}</h6>
-                <p>{{ job.description }}</p>
-                <botton type="button" title="Contact Us" onclick="location.href='/contact.html'">Contact Us</button>
+                <div class="m-3">
+                    <h4>{{ job.title }}</h4>
+                    <h6>{{ job.salary }}</h6>
+                    <p>{{ job.description }}</p>
+                    <a href='/contact.html' class = 'btn btn-secondary'>Apply</a>
+                </div>
             {% endfor %}
-            <button type="button" title="Contact Us" onclick="location.href='/contact.html'">Contact Us</button>
+            <div>
+                <button type="button" title="Contact Us" onclick="location.href='/contact.html'" class = 'btn btn-primary btn-lg mt-10'>Open Application</button>
+            </div>
         </div>
     </body>
 </html>
