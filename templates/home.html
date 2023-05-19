@@ -7,30 +7,28 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     </head>
     <body>
-        
-        <div>
-            <h1 class = 'text-center'>Cristina' Careers</h1>
+        {% include 'nav.html' %}
             <img  src="static\growth_pic.jpeg" alt="Cristina's Careers" class = 'container-fluid'>
-        </div>
-        <div class = 'container text-center'>
-            <div class = 'mt-3'>
-                <h3 class = 'mt-3'>About Cristina</h3>
-                <p class = 'lead'>Hello everyone, you'll learn about some jobs! About me, too much and not enough to say. </p>
-            </div>
-            <div class="mt-3">
-                <h3>Jobs</h3>
-            </div> 
-            {% for job in jobs %}
-                <div class="m-3">
-                    <h4>{{ job.title }}</h4>
-                    <h6>{{ job.salary }}</h6>
-                    <p>{{ job.description }}</p>
-                    <a href='/contact.html' class = 'btn btn-secondary'>Apply</a>
+            <div class = 'container text-center'>
+                <div class = 'mt-3'>
+                    <h3 class = 'mt-3'>About Cristina</h3>
+                    <p class = 'lead'>Hello everyone, you'll learn about some jobs! About me, too much and not enough to say. </p>
                 </div>
-            {% endfor %}
-            <div>
-                <button type="button" title="Contact Us" onclick="location.href='/contact.html'" class = 'btn btn-primary btn-lg mt-10'>Open Application</button>
+                <div class="mt-3">
+                    <h3>Jobs</h3>
+                </div> 
+                {% for job in jobs %}
+                    <div class="m-3">
+                        <h4>{{ job.title }}</h4>
+                        <h6>{{ job.salary }}</h6>
+                        <p>{{ job.description }}</p>
+                        <a href='/contact.html' class = 'btn btn-secondary'>Apply</a>
+                    </div>
+                {% endfor %}
+                <div>
+                    <button type="button" title="Contact Us" onclick="location.href='/contact.html'" class = 'btn btn-primary btn-lg mt-10'>Open Application</button>
+                </div>
             </div>
-        </div>
+        {% include 'footer.html' %}
     </body>
 </html>
