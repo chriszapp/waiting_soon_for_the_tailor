@@ -12,7 +12,7 @@ def connect_database():
 
 def load_jobs_from_database():
     connection = connect_database()
-    jobs_sql = connection.execute(sql.text('SELECT * FROM jobs'''))
+    jobs_sql = connection.execute(sql.text('SELECT * FROM jobs'))
     jobs = jobs_sql.all()
     print('jobs from database: ', jobs)
     return jobs
@@ -27,9 +27,8 @@ def home():
 @app.route("/jobs/<int:id>")
 def job(id):
     job = None
-    for j in JOBS:
-        if j["id"] == id:
-            job = j
+    jobs = load_jobs_from_database()
+    job = [j for j in jobs if j["id"] == id][0]
     return jsonify(job)
 
 if __name__ == "__main__":
