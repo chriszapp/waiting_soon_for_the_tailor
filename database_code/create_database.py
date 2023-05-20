@@ -1,12 +1,11 @@
 import os
 import mysql.connector
+
 from settings import *
-from create_database import *
+from database_structure import *
+from data_for_database import JOBS
 
 print("Connecting to database...")
-print("HOST: " + HOST)
-print("USERNAME: " + USERNAME)
-print("PASSWORD: " + PASSWORD)
 print("DATABASE: " + DATABASE)
 
 connection =  mysql.connector.connect(
@@ -15,10 +14,8 @@ connection =  mysql.connector.connect(
   passwd= PASSWORD,
   db= DATABASE,
   autocommit = True,
-  ssl_mode = "VERIFY_IDENTITY",
-  ssl_ca = {
-    "ca": "/etc/ssl/cert.pem"
-  }
+  ssl_verify_cert = True,
+  ssl_ca = "cacert.pem"
 )
 
 print(connection)

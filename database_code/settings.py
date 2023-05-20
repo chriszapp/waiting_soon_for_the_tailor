@@ -1,4 +1,4 @@
 HOST='aws.connect.psdb.cloud'
-USERNAME='q5x1999omyw7vnx7smyr'
-PASSWORD='main-2023-05-20-cf9b1q'
+USERNAME='o0nqlwal2j4d0oywi0l1'
+PASSWORD='pscale_pw_dir7LzaSqcLjwZgVCaizDxjh8iHJ8d2c8ZDHwN33HoQ'
 DATABASE='cristinascareer'

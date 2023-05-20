@@ -1,39 +1,26 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 
+import sqlalchemy as sql
+from database_code.settings import *
+
 app = Flask(__name__)
 
-JOBS = [
-    {
-        "id": 1,
-        "title": "Software Engineer",
-        "description": "A software engineer is a person who applies the principles of software engineering to the design, development, maintenance, testing, and evaluation of computer software.",
-        "salary": "$100,000",
-        "company": "Google",
-        "email": "emailme@contactsomeoneelse.com"
-    },
+def connect_database():
+    sql_conn = sql.create_engine(f"mysql+mysqlconnector://{USERNAME}:{PASSWORD}@{HOST}/{DATABASE}").connect()
 
-    {
-        "id": 2,
-        "title": "Data Engineer",
-        "description": "A data engineer is a person who applies the principles of software engineering to the design, development, maintenance, testing, and evaluation of computer software.",
-        "salary": "$100,000",
-        "company": "Apple",
-        "email": "emailme@contactsomeoneelse.com"
-    },
+    return sql_conn
 
-    {
-        "id": 3,
-        "title": "Data Scientist",
-        "description": "A data scientist is a person who applies the principles of software engineering to the design, development, maintenance, testing, and evaluation of computer software.",
-        "salary": "$100,000",
-        "company": "Notion",
-        "email": "emailme@contactsomeoneelse.com"
-    },
-]
+def load_jobs_from_database():
+    connection = connect_database()
+    jobs_sql = connection.execute(sql.text('SELECT * FROM jobs'''))
+    jobs = jobs_sql.all()
+    print('jobs from database: ', jobs)
+    return jobs
 
 # Get the web page
 @app.route("/")
 def home():
+    JOBS = load_jobs_from_database()
     return render_template("home.html", jobs = JOBS)
 
 # Get the json data
